@@ -11,39 +11,29 @@ import model.VaccineHistory;
 
 public class VaccineHistoryDAO {
 
-    Connection con = null;
-    PreparedStatement ps = null;
-    ResultSet rs = null;
+    static Connection con = null;
+    static PreparedStatement ps = null;
+   static  ResultSet rs = null;
 
     public List<VaccineHistory> getHistoryByIdUser(String id) {
-          List<VaccineHistory> list = new ArrayList<>();
-        String query = "SELECT u.username, u.gender, h.name, ap.appointmentDateAt, v.name AS vaccine_name, a.price\n"
-                + "FROM [user] u\n"
-                + "JOIN appointment a ON u.idUser = a.idUserVaccineA\n"
-                + "JOIN appointment_provision ap ON a.idAppoinmentProvisionA = ap.idAppointmentProvision\n"
-                + "JOIN vaccine v ON ap.idVaccineAP = v.idVaccine\n"
-                + "JOIN hospital h ON ap.idHAP = h.idH\n"
-                + "\n"
-                + "WHERE u.idUser = ?;";
+        List<VaccineHistory> list = new ArrayList<>();
+        String query = "   SELECT u.username, u.gender, v.name AS vaccine_name, h.name AS hospital_name, vh.vaccineAt, vp.pricePerService AS price\n"
+                + "FROM vaccine_history vh\n"
+                + "INNER JOIN [user] u ON vh.idUserVH = u.idUser\n"
+                + "INNER JOIN vaccine v ON vh.idVaccineVH = v.idVaccine\n"
+                + "INNER JOIN hospital h ON vh.idHVH = h.idH\n"
+                + "INNER JOIN vaccine_provision vp ON vh.idVaccineVH = vp.idVaccineVP AND vh.idHVH = vp.idHVP\n"
+                + "WHERE vh.idUserVH = ?";
         try {
             con = new DBContext().getConnect(); // mo ket noi voi sql sever       
             ps = con.prepareStatement(query); //chay cau lenh query           
             ps.setString(1, id);
-              
 
             rs = ps.executeQuery();
             while (rs.next()) {
-                
-                
-                System.out.println(rs.getString(1));
-                list.add(new VaccineHistory(
-                        rs.getString(1),
-                        rs.getBoolean(2),
-                        rs.getString(3),
-                        rs.getDate(4),
-                        rs.getString(5),
-                        rs.getDouble(6)
-                ));
+
+                list.add(new VaccineHistory(rs.getString(1), rs.getBoolean(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                        
             }
         } catch (Exception e) {
         }
@@ -59,8 +49,8 @@ public class VaccineHistoryDAO {
             ps.setInt(1, Integer.parseInt(id));
             rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new VaccineHistory(rs.getString(1), rs.getBoolean(2), rs.getString(3), rs.getDate(4),
-                        rs.getString(5), rs.getDouble(6)));
+                list.add(new VaccineHistory(rs.getString(1), rs.getBoolean(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5), rs.getString(6)));
             }
         } catch (Exception e) {
         }
@@ -69,14 +59,15 @@ public class VaccineHistoryDAO {
 
     public static void main(String[] args) {
         VaccineHistoryDAO dao = new VaccineHistoryDAO();
-            try {
-            List<VaccineHistory> listh = dao.getHistoryByIdUser("1003");
-            
-        for (VaccineHistory history : listh) {
-            System.out.println(history);
-        }
-        } catch (Exception ex) {
-            Logger.getLogger(VaccineHistoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        List<VaccineHistory> historyList = dao.getHistoryByIdUser("1003");
+        for (VaccineHistory history : historyList) {
+            System.out.println("Username: " + history.getUserName());
+            System.out.println("Gender: " + (history.getGender()));
+            System.out.println("Vaccine Name: " + history.getNameVaccine());
+            System.out.println("Hospital Name: " + history.getNameHospital());
+            System.out.println("Vaccinated At: " + history.getDate());
+            System.out.println("Price: " + history.getPrice());
+            System.out.println("---------------------------------------");
         }
 
     }

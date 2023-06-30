@@ -3,7 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
-import model.Hospital;
+import model.User;
 
 public final class user_005fmanager_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -13,6 +13,8 @@ public final class user_005fmanager_jsp extends org.apache.jasper.runtime.HttpJs
   private static java.util.List<String> _jspx_dependants;
 
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_set_var_value_scope_nobody;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_out_value_nobody;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_varStatus_var_items_end_begin;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_if_test;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_fmt_formatNumber_var_value_type;
 
@@ -24,12 +26,16 @@ public final class user_005fmanager_jsp extends org.apache.jasper.runtime.HttpJs
 
   public void _jspInit() {
     _jspx_tagPool_c_set_var_value_scope_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_c_out_value_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_c_forEach_varStatus_var_items_end_begin = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_c_if_test = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_fmt_formatNumber_var_value_type = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
   }
 
   public void _jspDestroy() {
     _jspx_tagPool_c_set_var_value_scope_nobody.release();
+    _jspx_tagPool_c_out_value_nobody.release();
+    _jspx_tagPool_c_forEach_varStatus_var_items_end_begin.release();
     _jspx_tagPool_c_if_test.release();
     _jspx_tagPool_fmt_formatNumber_var_value_type.release();
   }
@@ -67,12 +73,12 @@ public final class user_005fmanager_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("\n");
       out.write("    <head>\n");
       out.write("        ");
-      dal.HospitalDAO h = null;
+      dal.AdminDAO a = null;
       synchronized (session) {
-        h = (dal.HospitalDAO) _jspx_page_context.getAttribute("h", PageContext.SESSION_SCOPE);
-        if (h == null){
-          h = new dal.HospitalDAO();
-          _jspx_page_context.setAttribute("h", h, PageContext.SESSION_SCOPE);
+        a = (dal.AdminDAO) _jspx_page_context.getAttribute("a", PageContext.SESSION_SCOPE);
+        if (a == null){
+          a = new dal.AdminDAO();
+          _jspx_page_context.setAttribute("a", a, PageContext.SESSION_SCOPE);
         }
       }
       out.write("\n");
@@ -330,7 +336,7 @@ public final class user_005fmanager_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("\n");
       out.write("        <div class=\"container\">\n");
       out.write("            <nav class=\"navbar navbar-expand-lg navbar-dark bg-dark fixed-top\">\n");
-      out.write("                <a class=\"navbar-brand\" href=\"#\">Hospital Management</a>\n");
+      out.write("                <a class=\"navbar-brand\" href=\"#\">User Management</a>\n");
       out.write("                <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\"\n");
       out.write("                        aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n");
       out.write("                    <span class=\"navbar-toggler-icon\"></span>\n");
@@ -373,20 +379,155 @@ public final class user_005fmanager_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("                <div class=\"table-title\">\n");
       out.write("                    <div class=\"row\">\n");
       out.write("                        <div class=\"col-sm-6\">\n");
-      out.write("                            <h2>Manage <b>Hospital</b></h2>\n");
+      out.write("                            <h2>Manage <b>User</b></h2>\n");
       out.write("                        </div>\n");
-      out.write("                        <div class=\"col-sm-6\">\n");
+      out.write("<!--                        <div class=\"col-sm-6\">\n");
       out.write("\n");
-      out.write("                            <!--                            <a href=\"AddVaccine.jsp \"  class=\"btn btn-primary edit-btn\"><i class=\"material-icons\">&#xE147;</i><span>Add Vaccine</span></a> -->\n");
-      out.write("                            <!--                            <a href=\"#\" class=\"btn btn-primary edit-btn\" data-toggle=\"modal\" data-target=\"#addVaccineModal\"><i class=\"material-icons\">&#xE147;</i><span>Add Vaccine</span></a>-->\n");
+      out.write("                                                        <a href=\"AddVaccine.jsp \"  class=\"btn btn-primary edit-btn\"><i class=\"material-icons\">&#xE147;</i><span>Add Vaccine</span></a> \n");
+      out.write("                                                        <a href=\"#\" class=\"btn btn-primary edit-btn\" data-toggle=\"modal\" data-target=\"#addVaccineModal\"><i class=\"material-icons\">&#xE147;</i><span>Add Vaccine</span></a>\n");
       out.write("                            <a href=\"#\" class=\"btn btn-primary edit-btn\" data-toggle=\"modal\" data-target=\"#addModal\">\n");
       out.write("                                <i class=\"material-icons\">&#xE147;</i>\n");
       out.write("                                <span>Add Hospital</span>\n");
       out.write("                            </a>\n");
       out.write("\n");
-      out.write("                        </div>\n");
+      out.write("                        </div>-->\n");
       out.write("                    </div>\n");
-      out.write("                </div>       ");
+      out.write("                </div>      \n");
+      out.write("                \n");
+      out.write("                \n");
+      out.write("                \n");
+      out.write("                \n");
+      out.write("                 ");
+
+                    if (session.getAttribute("updateinforsucess") != null) {
+                
+      out.write("\n");
+      out.write("                <script>\n");
+      out.write("                    alert(\"");
+      out.print( session.getAttribute("updateinforsucess"));
+      out.write("\");\n");
+      out.write("                </script>\n");
+      out.write("                ");
+
+                        // Xóa session để không hiển thị lại khi người dùng tải lại trang
+                        session.removeAttribute("updateinforsucess");
+                    }
+                
+      out.write("  \n");
+      out.write("                \n");
+      out.write("                \n");
+      out.write("                ");
+
+                    if (session.getAttribute("delete") != null) {
+                
+      out.write("\n");
+      out.write("                <script>\n");
+      out.write("                    alert(\"");
+      out.print( session.getAttribute("delete"));
+      out.write("\");\n");
+      out.write("                </script>\n");
+      out.write("                ");
+
+                        // Xóa session để không hiển thị lại khi người dùng tải lại trang
+                        session.removeAttribute("delete");
+                    }
+                
+      out.write("   \n");
+      out.write("\n");
+      out.write("\n");
+      out.write("                ");
+
+                    if (session.getAttribute("resetPass") != null) {
+                
+      out.write("\n");
+      out.write("                <script>\n");
+      out.write("                    alert(\"");
+      out.print( session.getAttribute("resetPass"));
+      out.write("\");\n");
+      out.write("                </script>\n");
+      out.write("                ");
+
+                        // Xóa session để không hiển thị lại khi người dùng tải lại trang
+                        session.removeAttribute("resetPass");
+                    }
+                
+      out.write("  \n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("                 <div id=\"product-manager \" class=\"container \" >\n");
+      out.write("                    <table class=\"table table-striped table-hover \">\n");
+      out.write("                  \n");
+      out.write("                        <thead>\n");
+      out.write("                            <tr>\n");
+      out.write("                                <th>Serial</th>\n");
+      out.write("                                <th>ID</th>\n");
+      out.write("                                <th>Name</th>\n");
+      out.write("                                <th>Phone</th>\n");
+      out.write("                                <th>Email</th>\n");
+      out.write("                                <th>Actions</th>\n");
+      out.write("                            </tr>\n");
+      out.write("                        </thead>\n");
+      out.write("                        <tbody>\n");
+      out.write("                            ");
+      if (_jspx_meth_c_forEach_0(_jspx_page_context))
+        return;
+      out.write("\n");
+      out.write("                        </tbody>\n");
+      out.write("                    </table>\n");
+      out.write("                </div>    \n");
+      out.write("            </div>\n");
+      out.write("\n");
+      out.write("             <div style=\"text-align: center\" class=\"mt-5\">\n");
+      out.write("                <a href=\"user_manager.jsp?page=1\"><<</a>\n");
+      out.write("                <a href=\"user_manager.jsp?page=");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${page-1}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\"><</a>\n");
+      out.write("                ");
+      if (_jspx_meth_c_out_0(_jspx_page_context))
+        return;
+      out.write("\n");
+      out.write("                <a href=\"user_manager.jsp?page=");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${page+1}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\">></a>\n");
+      out.write("                <a href=\"user_manager.jsp?page=");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${maxpage}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\">>></a>\n");
+      out.write("            </div>\n");
+      out.write("        </div>\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("        <!-- Modal chỉnh sửa -->\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("        <!--footer-->\n");
+      out.write("\n");
+      out.write("     \n");
+      out.write("\n");
+      out.write("        <script src=\"assets/js/managerjs.js\"></script>\n");
+      out.write("        <script src=\"https://code.jquery.com/jquery-3.2.1.slim.min.js\"></script>\n");
+      out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\"></script>\n");
+      out.write("        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js\"></script>\n");
+      out.write("        <script src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>\n");
+      out.write("        <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>\n");
+      out.write("        <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js\"></script>\n");
+      out.write("\n");
+      out.write("        <script>\n");
+      out.write("                    //                                function showMess(id) {\n");
+      out.write("                    //                                    var option = confirm('Are you sure to delete');\n");
+      out.write("                    //                                    if (option === true) {\n");
+      out.write("                    //                                        window.location.href = 'delete?sid=' + id;\n");
+      out.write("                    //                                    }\n");
+      out.write("                    //                                }\n");
+      out.write("        </script>\n");
+      out.write("\n");
+      out.write("    </body>\n");
+      out.write("\n");
+      out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -583,7 +724,7 @@ public final class user_005fmanager_jsp extends org.apache.jasper.runtime.HttpJs
     _jspx_th_fmt_formatNumber_0.setParent(null);
     _jspx_th_fmt_formatNumber_0.setType("number");
     _jspx_th_fmt_formatNumber_0.setVar("maxpage");
-    _jspx_th_fmt_formatNumber_0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${Math.ceil(h.allHospital.size()/2)}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_fmt_formatNumber_0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${Math.ceil(a.allUser.size()/2)}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_fmt_formatNumber_0 = _jspx_th_fmt_formatNumber_0.doStartTag();
     if (_jspx_eval_fmt_formatNumber_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       if (_jspx_eval_fmt_formatNumber_0 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE) {
@@ -658,6 +799,281 @@ public final class user_005fmanager_jsp extends org.apache.jasper.runtime.HttpJs
       return true;
     }
     _jspx_tagPool_c_set_var_value_scope_nobody.reuse(_jspx_th_c_set_4);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_varStatus_var_items_end_begin.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_0.setParent(null);
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.allUser}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_0.setVar("i");
+    _jspx_th_c_forEach_0.setBegin(((java.lang.Integer) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${(page-1)*10}", java.lang.Integer.class, (PageContext)_jspx_page_context, null)).intValue());
+    _jspx_th_c_forEach_0.setEnd(((java.lang.Integer) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${page*10-1}", java.lang.Integer.class, (PageContext)_jspx_page_context, null)).intValue());
+    _jspx_th_c_forEach_0.setVarStatus("loop");
+    int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
+      if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("     \n");
+          out.write("                                <tr>\n");
+          out.write("                                    <td>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${loop.index + 1}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</td>\n");
+          out.write("                                    <td>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.idUser}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</td>\n");
+          out.write("                                    <td>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.username}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</td>\n");
+          out.write("                                    <td> ");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.phone}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</td>\n");
+          out.write("                                    <td>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.email}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</td>\n");
+          out.write("                                    \n");
+          out.write("                                    \n");
+          out.write("                                    <td style=\"display: flex; flex-direction: row\" >  \n");
+          out.write("                                        <a href=\"#\" class=\" edit-btn\" data-toggle=\"modal\" data-target=\"#editModal");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.idUser}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" >\n");
+          out.write("                                            <i class=\"material-icons\"  title=\"Edit\">&#xE147;</i>\n");
+          out.write("                                        </a>\n");
+          out.write("                                        <a href=\"#\" class=\"delete\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.idUser}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\"><i class=\"material-icons\" title=\"Delete\">&#xE872;</i></a>\n");
+          out.write("                                        <a href=\"#\" style=\"color: blue\" data-bs-toggle=\"modal\" data-bs-target=\"#resetPass");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.idUser}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\"><i class=\"material-icons\" title=\"Reset Password\">&#xeade;  </i></a>\n");
+          out.write("                                    </td>\n");
+          out.write("                                    \n");
+          out.write("                              \n");
+          out.write("                                \n");
+          out.write("                                \n");
+          out.write("                                \n");
+          out.write("                                \n");
+          out.write("                                <!--reset Password-->\n");
+          out.write("                                \n");
+          out.write("                            <div class=\"modal fade\" id=\"resetPass");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.idUser}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" tabindex=\"-1\" role=\"dialog\"\n");
+          out.write("                                 aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n");
+          out.write("                                <div class=\"modal-dialog\">\n");
+          out.write("                                    <div class=\"modal-content\">\n");
+          out.write("                                        <div class=\"modal-header\">\n");
+          out.write("                                            <h5 class=\"modal-title\" id=\"exampleModalLabel\"><i class=\"bi bi-trash-fill\"></i>\n");
+          out.write("                                                Reset password</h5>\n");
+          out.write("                                            <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\"\n");
+          out.write("                                                    aria-label=\"Close\">&times;</button>\n");
+          out.write("                                        </div>\n");
+          out.write("                                        <div class=\"modal-body\">\n");
+          out.write("                                            Are you sure to reset password this User?\n");
+          out.write("                                        </div>\n");
+          out.write("                                        <div class=\"modal-footer\">\n");
+          out.write("                                            <form action=\"ResetPasswordUserByAdminController\" method=\"Post\">\n");
+          out.write("                                                <input type=\"search\" value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.idUser}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" name=\"idUser\" hidden>\n");
+          out.write("                                                <input type=\"search\" value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.email}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" name=\"email\" hidden>\n");
+          out.write("                                                <!-- <input type=\"search\" value=\"w\" name=\"pid\" hidden> -->\n");
+          out.write("                                                <button type=\"submit\" class=\"btn btn-primary\">Yes</button>\n");
+          out.write("                                                <button type=\"button\" class=\"btn btn-secondary\"\n");
+          out.write("                                                        data-bs-dismiss=\"modal\">No</button>\n");
+          out.write("                                            </form>\n");
+          out.write("                                        </div>\n");
+          out.write("                                    </div>\n");
+          out.write("                                </div>\n");
+          out.write("                            </div>\n");
+          out.write("\n");
+          out.write("\n");
+          out.write("                            <!--delete-->\n");
+          out.write("\n");
+          out.write("                            <div class=\"modal fade\" id=\"exampleModal");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.idUser}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" tabindex=\"-1\" role=\"dialog\"\n");
+          out.write("                                 aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n");
+          out.write("                                <div class=\"modal-dialog\">\n");
+          out.write("                                    <div class=\"modal-content\">\n");
+          out.write("                                        <div class=\"modal-header\">\n");
+          out.write("                                            <h5 class=\"modal-title\" id=\"exampleModalLabel\"><i class=\"bi bi-trash-fill\"></i>\n");
+          out.write("                                                Delete</h5>\n");
+          out.write("                                            <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\"\n");
+          out.write("                                                    aria-label=\"Close\">&times;</button>\n");
+          out.write("                                        </div>\n");
+          out.write("                                        <div class=\"modal-body\">\n");
+          out.write("                                            Are you sure to delete this User?\n");
+          out.write("                                        </div>\n");
+          out.write("                                        <div class=\"modal-footer\">\n");
+          out.write("                                            <form action=\"DeleteUserByAdminController\" method=\"Post\">\n");
+          out.write("                                                <input type=\"search\" value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.idUser}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" name=\"idUser\" hidden>\n");
+          out.write("                                                <!-- <input type=\"search\" value=\"w\" name=\"pid\" hidden> -->\n");
+          out.write("                                                <button type=\"submit\" class=\"btn btn-primary\">Yes</button>\n");
+          out.write("                                                <button type=\"button\" class=\"btn btn-secondary\"\n");
+          out.write("                                                        data-bs-dismiss=\"modal\">No</button>\n");
+          out.write("                                            </form>\n");
+          out.write("                                        </div>\n");
+          out.write("                                    </div>\n");
+          out.write("                                </div>\n");
+          out.write("                            </div>\n");
+          out.write("\n");
+          out.write("                                                        <!--edit-->\n");
+          out.write("\n");
+          out.write("                            <div class=\"modal fade editprofile\" id=\"editModal");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.idUser}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"editModalLabel\"\n");
+          out.write("                                 aria-hidden=\"true\">\n");
+          out.write("                                <div class=\"modal-dialog modal-lg\" role=\"document\">\n");
+          out.write("                                    <div class=\"modal-content\">\n");
+          out.write("                                        <div class=\"modal-header\">\n");
+          out.write("                                            <h5 class=\"modal-title\" id=\"editModalLabel\">Edit User</h5>\n");
+          out.write("                                            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n");
+          out.write("                                                <span aria-hidden=\"true\">&times;</span>\n");
+          out.write("                                            </button>\n");
+          out.write("                                        </div>\n");
+          out.write("                                        <div class=\"modal-body\">\n");
+          out.write("                                            <!--form chỉnh sửa-->\n");
+          out.write("                                            <form class=\"form\" action=\"UpdateUserByAdminController\" method=\"post\"\n");
+          out.write("                                                  id=\"infor\">\n");
+          out.write("                                                <input type=\"search\" value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.idUser}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" name=\"idUser\" hidden>\n");
+          out.write("                                                <div class=\"container row\">\n");
+          out.write("\n");
+          out.write("\n");
+          out.write("\n");
+          out.write("                                                    <div class=\"col-sm-12\">\n");
+          out.write("                                                        <label for=\"first_name\">\n");
+          out.write("                                                            <h6>User name</h6>\n");
+          out.write("                                                        </label>\n");
+          out.write("\n");
+          out.write("                                                        <input required type=\"text\" class=\"form-control\"\n");
+          out.write("                                                               name=\"name\" id=\"first_name\"\n");
+          out.write("                                                               value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.username}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" />\n");
+          out.write("                                                    </div>\n");
+          out.write("\n");
+          out.write("\n");
+          out.write("\n");
+          out.write("                                                    <div class=\"col-sm-6\">\n");
+          out.write("                                                        <label for=\"last_name\">\n");
+          out.write("                                                            <h6>Gender</h6>\n");
+          out.write("                                                        </label>\n");
+          out.write("\n");
+          out.write("                                                        <select name=\"gender\" class=\"form-control\" id=\"gender\">\n");
+          out.write("                                                            <option value=\"false\" >Female</option>\n");
+          out.write("                                                            <option value=\"true\" >Male</option>\n");
+          out.write("                                                        </select>                                                                                \n");
+          out.write("                                                    </div>\n");
+          out.write("                                                    <div class=\"col-sm-6\">\n");
+          out.write("                                                        <label for=\"phone\">\n");
+          out.write("                                                            <h6>Date of birth</h6>\n");
+          out.write("                                                        </label>\n");
+          out.write("                                                        <input required name =\"dob\" type=\"date\" class=\"form-control\" placeholder aria-label=\"Phone number\"\n");
+          out.write("                                                               value=\"\">\n");
+          out.write("                                                    </div>\n");
+          out.write("\n");
+          out.write("\n");
+          out.write("                                                    <div class=\"col-sm-6\">\n");
+          out.write("                                                        <label for=\"mobile\">\n");
+          out.write("                                                            <h6>Mobile</h6>\n");
+          out.write("                                                        </label>\n");
+          out.write("                                                        <input required type=\"text\" class=\"form-control\"\n");
+          out.write("                                                               name=\"phone\" id=\"mobile\"\n");
+          out.write("                                                               value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.phone}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" />\n");
+          out.write("                                                    </div>\n");
+          out.write("\n");
+          out.write("                                                    <div class=\"col-sm-6\">\n");
+          out.write("                                                        <label for=\"email\">\n");
+          out.write("                                                            <h6>Email</h6>\n");
+          out.write("                                                        </label>\n");
+          out.write("                                                        <input required type=\"email\" class=\"form-control\"\n");
+          out.write("                                                               name=\"email\" id=\"email\"\n");
+          out.write("                                                               value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.email}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\"/>\n");
+          out.write("                                                    </div>\n");
+          out.write("\n");
+          out.write("                                                    <div class=\"col-sm-6\">\n");
+          out.write("                                                        <label for=\"email\">\n");
+          out.write("                                                            <h6>Identification</h6>\n");
+          out.write("                                                        </label>\n");
+          out.write("                                                        <input required type=\"text\" class=\"form-control\"\n");
+          out.write("                                                               id=\"location\" name=\"identification\"\n");
+          out.write("                                                               value=\"\"/>\n");
+          out.write("\n");
+          out.write("                                                    </div>\n");
+          out.write("\n");
+          out.write("                                                    <div class=\"col-sm-6\">\n");
+          out.write("                                                        <label for=\"email\">\n");
+          out.write("                                                            <h6>Health Insurance</h6>\n");
+          out.write("                                                        </label>\n");
+          out.write("                                                        <input required type=\"text\" class=\"form-control\"\n");
+          out.write("                                                               id=\"location\" name=\"healthInsurance\"\n");
+          out.write("                                                               value=\"\"/>\n");
+          out.write("\n");
+          out.write("                                                    </div>\n");
+          out.write("                                                </div>\n");
+          out.write("                                                <div class=\"modal-footer\">\n");
+          out.write("                                                    <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n");
+          out.write("                                                    <button type=\"submit\" class=\"btn btn-primary save-button\">Save changes</button>\n");
+          out.write("                                                </div>\n");
+          out.write("                                            </form>\n");
+          out.write("                                        </div>\n");
+          out.write("                                    </div>\n");
+          out.write("                                </div>\n");
+          out.write("                            </div>\n");
+          out.write("\n");
+          out.write("\n");
+          out.write("\n");
+          out.write("\n");
+          out.write("                        ");
+          int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_0.doFinally();
+      _jspx_tagPool_c_forEach_varStatus_var_items_end_begin.reuse(_jspx_th_c_forEach_0);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_out_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_0 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_out_0.setPageContext(_jspx_page_context);
+    _jspx_th_c_out_0.setParent(null);
+    _jspx_th_c_out_0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${page}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_c_out_0 = _jspx_th_c_out_0.doStartTag();
+    if (_jspx_th_c_out_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_0);
+      return true;
+    }
+    _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_0);
     return false;
   }
 }

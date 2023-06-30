@@ -1,3 +1,4 @@
+
 <%-- 
     Document   : History
     Created on : Jun 7, 2023, 10:40:25 PM
@@ -31,14 +32,20 @@
                 </tr>
             </thead>
             <tbody>
-                <c:forEach items="${History}" var="o">
+                <c:forEach items="${History}" var="history">
                 <tr>
-                    <td>${o.userName}</td>
-                    <td>${o.gender}</td>
-                    <td>${o.hospital}</td>
-                    <td>${o.date}</td>
-                    <td>${o.vaccine}</td>
-                    <td>${o.price}</td>
+                    <td>${history.userName}</td>
+                    <td>
+                    <c:choose>
+                        <c:when test="${history.gender eq 'false'}">Male</c:when>
+                        <c:when test="${history.gender eq 'true'}">Female</c:when>
+                        <c:otherwise>Unknown</c:otherwise>
+                    </c:choose>
+                        </td>
+                    <td>${history.nameVaccine}</td>
+                    <td>${history.date}</td>
+                    <td>${history.nameHospital}</td>
+                    <td>${history.price}</td>
                 </tr>
             </c:forEach>
            

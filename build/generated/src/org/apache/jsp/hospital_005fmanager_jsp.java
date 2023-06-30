@@ -651,7 +651,7 @@ public final class hospital_005fmanager_jsp extends org.apache.jasper.runtime.Ht
       out.write("\n");
       out.write("        <!--footer-->\n");
       out.write("\n");
-      out.write("        <footer>\n");
+      out.write("<!--        <footer>\n");
       out.write("            <div class=\"row\">\n");
       out.write("                <div class=\"col-4 col-sm-2\">\n");
       out.write("                    <p>Links</p>\n");
@@ -709,7 +709,7 @@ public final class hospital_005fmanager_jsp extends org.apache.jasper.runtime.Ht
       out.write("\n");
       out.write("                <div class=\"col-auto\" style=\"margin: auto;\">© Copyright 2018 Ristorante Con Fusion</div>\n");
       out.write("            </div>\n");
-      out.write("        </footer>\n");
+      out.write("        </footer>-->\n");
       out.write("\n");
       out.write("        <script src=\"assets/js/managerjs.js\"></script>\n");
       out.write("        <script src=\"https://code.jquery.com/jquery-3.2.1.slim.min.js\"></script>\n");
@@ -1150,7 +1150,7 @@ public final class hospital_005fmanager_jsp extends org.apache.jasper.runtime.Ht
           out.write("                                                            <h5>Hospital name</h5>\n");
           out.write("                                                        </label>\n");
           out.write("\n");
-          out.write("                                                        <input type=\"text\" class=\"form-control\"\n");
+          out.write("                                                        <input required type=\"text\" class=\"form-control\"\n");
           out.write("                                                               name=\"name\" id=\"first_name\"\n");
           out.write("                                                               value=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.name}", java.lang.String.class, (PageContext)_jspx_page_context, null));
@@ -1160,7 +1160,7 @@ public final class hospital_005fmanager_jsp extends org.apache.jasper.runtime.Ht
           out.write("                                                        <label for=\"email\">\n");
           out.write("                                                            <h5>Email</h5>\n");
           out.write("                                                        </label>\n");
-          out.write("                                                        <input type=\"email\" class=\"form-control\"\n");
+          out.write("                                                        <input required type=\"email\" class=\"form-control\"\n");
           out.write("                                                               name=\"email\" id=\"email\"\n");
           out.write("                                                               value=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.email}", java.lang.String.class, (PageContext)_jspx_page_context, null));
@@ -1171,7 +1171,7 @@ public final class hospital_005fmanager_jsp extends org.apache.jasper.runtime.Ht
           out.write("                                                        <label for=\"hotline\">\n");
           out.write("                                                            <h5>Hotline</h5>\n");
           out.write("                                                        </label>\n");
-          out.write("                                                        <input type=\"text\" class=\"form-control\"\n");
+          out.write("                                                        <input required type=\"text\" class=\"form-control\"\n");
           out.write("                                                               name=\"hotline\" id=\"mobile\"\n");
           out.write("                                                               value=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.hotline}", java.lang.String.class, (PageContext)_jspx_page_context, null));
@@ -1183,7 +1183,7 @@ public final class hospital_005fmanager_jsp extends org.apache.jasper.runtime.Ht
           out.write("                                                        <label for=\"address\">\n");
           out.write("                                                            <h5>Address</h5>\n");
           out.write("                                                        </label>\n");
-          out.write("                                                        <input type=\"text\" class=\"form-control\"\n");
+          out.write("                                                        <input required type=\"text\" class=\"form-control\"\n");
           out.write("                                                               id=\"location\" name=\"address\"\n");
           out.write("                                                               value=\"\"/>\n");
           out.write("\n");

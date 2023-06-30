@@ -37,7 +37,7 @@ public class HospitalController extends HttpServlet {
         
         List<Hospital> list = dao.getAllHospital();
         request.setAttribute("ListHospital", list);
-        request.getRequestDispatcher("Hospital_infomation.jsp").forward(request, response);
+        request.getRequestDispatcher("Hospital_Information.jsp").forward(request, response);
     }
 
     @Override

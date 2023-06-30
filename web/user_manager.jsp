@@ -382,7 +382,7 @@
                                             <i class="material-icons"  title="Edit">&#xE147;</i>
                                         </a>
                                         <a href="#" class="delete" data-bs-toggle="modal" data-bs-target="#exampleModal${i.idUser}"><i class="material-icons" title="Delete">&#xE872;</i></a>
-                                        <a href="#" style="color: blue" data-bs-toggle="modal" data-bs-target="#resetPass${i.idUser}"><i class="material-icons" title="Reset Password">&#xeade;  </i></a>
+                                        <a href="#" style="color: blue" data-bs-toggle="modal" data-bs-target="#resetPass${i.idUser}"><i class="material-icons" title="Reset Password">&#xeade;</i></a>
                                     </td>
                                     
                               
