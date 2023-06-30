@@ -48,7 +48,7 @@ public class loginController extends HttpServlet {
                 if (hospital != null) {
                     request.getSession().setAttribute("id", hospital.getIdBV());
                     request.getSession().setAttribute("role", 3);
-                    response.sendRedirect("hospital.jsp");
+                    response.sendRedirect("hospitalManagerVaccineProvision.jsp");
                     
                 } else {
                     request.getSession().setAttribute("alertMessage", "Email Or Password Wrong");
@@ -69,7 +69,7 @@ public class loginController extends HttpServlet {
                         // 2 la admin
                         response.sendRedirect("newHome1.jsp");
                     } else if (user.getRole() == 2) {
-                        response.sendRedirect("login.jsp");
+                        response.sendRedirect("AdminManagerVaccine.jsp");
                     }
                 } else {
                     request.getSession().setAttribute("alertMessage", "Email Or Password Wrong");

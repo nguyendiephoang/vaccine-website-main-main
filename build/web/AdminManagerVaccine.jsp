@@ -26,32 +26,30 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        
+        
+        
+        <link rel="stylesheet" href="css/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+            <!----css3---->
+            <link rel="stylesheet" href="css/custom.css">
 
 
+            <!--google fonts -->
+
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 
+            <!--google material icon-->
+            <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 
 
-    <body>
-        <c:set var="page" value="${param.page}" scope="session"/>
-        <c:if test="${page<=0}">
-            <c:set var="page" value="1" scope="session"/>
-        </c:if>
-        <c:if test="${page==null}">
-            <c:set var="page" value="1" scope="session"/>
-        </c:if>
-        <c:if test="${not empty page}">
-            <c:set var="page" value="${page}" scope="session"/>
-        </c:if>
-        <fmt:formatNumber type="number" var="maxpage" value="${Math.ceil(v.allVaccine.size()/2)}">
+        </head>
 
-        </fmt:formatNumber>
-        <c:if test="${page>=maxpage}">
-            <c:set var="page" value="${maxpage}" scope="session"/>
-        </c:if>
         <style>
             body {
-                padding-top: 70px; /* Khoảng cách giữa header và nội dung trang */
+                padding-top: 0px; /* Khoảng cách giữa header và nội dung trang */
             }
             .fixed-top {
                 position: fixed;
@@ -64,9 +62,27 @@
                 width: 100px;
             }
 
+            .editprofile .modal-body {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+
+            }
+            .editprofile .modal-body .container.row {
+                padding-left: 35px;
+            }
 
 
 
+            .editprofile .modal-footer{
+                margin-top: 25px
+            }
+            .editprofile .modal-content{
+                width: 200%;
+                margin-left: -50%;
+                position: absolute;
+
+            }
 
 
 
@@ -171,12 +187,10 @@
 
 
             /* Modal styles */
-            .modal .modal-dialog {
-                max-width: 400px;
-            }
-            .modal .modal-header, .modal .modal-body, .modal .modal-footer {
-                padding: 20px 30px;
-            }
+
+            /*            .modal .modal-header, .modal .modal-body, .modal .modal-footer {
+                            padding: 20px 30px;
+                        }*/
             .modal .modal-content {
                 border-radius: 3px;
             }
@@ -222,65 +236,201 @@
                 color: blue;
                 text-decoration: underline;
             }
-
-
-
-
-
-
-
-
-
-
-
+            footer.footer {
+                margin-top: 16%;
+            }
 
         </style>
 
+
+
+
+
+
+    <body>
+        <c:set var="page" value="${param.page}" scope="session"/>
+        <c:if test="${page<=0}">
+            <c:set var="page" value="1" scope="session"/>
+        </c:if>
+        <c:if test="${page==null}">
+            <c:set var="page" value="1" scope="session"/>
+        </c:if>
+        <c:if test="${not empty page}">
+            <c:set var="page" value="${page}" scope="session"/>
+        </c:if>
+        <fmt:formatNumber type="number" var="maxpage" value="${Math.ceil(v.allVaccine.size()/2)}">
+
+        </fmt:formatNumber>
+        <c:if test="${page>=maxpage}">
+            <c:set var="page" value="${maxpage}" scope="session"/>
+        </c:if>
+       
         <!--        ----------------------------------Header----------------------------------->
 
 
         <!--------------------------------table CRUD----------------------------------->
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-                <a class="navbar-brand" href="#">Vaccine Management</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto"> <!-- Sử dụng class ml-auto để căn chỉnh sang phải -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">
-                                Manager
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="AdminManagerVaccine.jsp">Vaccine Manager</a>
-                                <a class="dropdown-item" href="hospital_manager.jsp">Hospital Manager</a>
-                                <a class="dropdown-item" href="user_manager.jsp">User Manager</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">account_circle</i> Profile
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="material-icons">login</i> Login
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="material-icons">logout</i> Logout
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
+        
+        
+          <div class="wrapper">
+
+
+            <div class="body-overlay"></div>
+
+            <!-------------------------sidebar------------>
+            <!-- Sidebar  -->
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h3><img src="images/logo.png" class="img-fluid" style="width:100px; border-radius:50%;" /></h3>
                 </div>
+                <ul class="list-unstyled components">
+                    <li>
+                        <a href="#" class="dashboard"><i class="material-icons">dashboard</i>
+                            <span>Admin</span></a>
+                    </li>
+
+
+
+                    <li class="active">
+                        <a href="AdminManagerVaccine.jsp" ><i class="material-icons">date_range</i><span>Vaccine Manager</span></a>
+                    </li>
+                    <li class="">
+                        <a href="hospital_manager.jsp" ><i class="material-icons">date_range</i><span>Hospital Manager</span></a>
+                    </li>
+                    <li class="">
+                        <a href="user_manager.jsp"><i class="material-icons">date_range</i><span>User Manager</span></a>
+                    </li>
+
+                    <li class="">
+                        <a href="#" class="nav-link"><i class="material-icons">library_books</i><span>Calender
+                            </span></a>
+                    </li>
+
+
+                </ul>
+
+
             </nav>
 
+
+
+
+            <!--------page-content---------------->
+
+            <div id="content">
+
+                <!--top--navbar----design--------->
+
+                <div class="top-navbar">
+                    <div class="xp-topbar">
+
+                        <!-- Start XP Row -->
+                        <div class="row">
+                            <!-- Start XP Col -->
+                            <div class="col-2 col-md-1 col-lg-1 order-2 order-md-1 align-self-center">
+                                <div class="xp-menubar">
+                                    <span class="material-icons text-white">signal_cellular_alt
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- End XP Col -->
+
+                            <!-- Start XP Col -->
+                            <div class="col-md-5 col-lg-3 order-3 order-md-2">
+                                <div class="xp-searchbar">
+                                    <form>
+                                        <div class="input-group">
+                                            <input type="search" class="form-control" placeholder="Search">
+                                            <div class="input-group-append">
+                                                <button class="btn" type="submit" id="button-addon2">GO</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- End XP Col -->
+
+                            <!-- Start XP Col -->
+                            <div class="col-10 col-md-6 col-lg-8 order-1 order-md-3">
+                                <div class="xp-profilebar text-right">
+                                    <nav class="navbar p-0">
+                                        <ul class="nav navbar-nav flex-row ml-auto">
+                                            <li class="dropdown nav-item active">
+                                                <a href="#" class="nav-link" data-toggle="dropdown">
+                                                    <span class="material-icons">notifications</span>
+                                                    <span class="notification">4</span>
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a href="#">You have 5 new messages</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">You're now friend with Mike</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Wish Mary on her birthday!</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">5 warnings in Server Console</a>
+                                                    </li>
+
+                                                </ul>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#">
+                                                    <span class="material-icons">question_answer</span>
+
+                                                </a>
+                                            </li>
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link" href="#" data-toggle="dropdown">
+                                                    <img src="images/user_admin.jpg" style="width:40px; border-radius:50%;" />
+                                                    <span class="xp-user-live"></span>
+                                                </a>
+                                                <ul class="dropdown-menu small-menu">
+                                                    <li>
+                                                        <a href="#">
+                                                            <span class="material-icons">
+                                                                person_outline
+                                                            </span>Profile
+
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#"><span class="material-icons">
+                                                                settings
+                                                            </span>Settings</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="logoutController"><span class="material-icons">
+                                                                logout</span>Logout</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+
+
+                                    </nav>
+
+                                </div>
+                            </div>
+                            <!-- End XP Col -->
+
+                        </div>
+                        <!-- End XP Row -->
+
+                    </div>
+                    <div class="xp-breadcrumbbar text-center">
+                        <h4 class="page-title">Manage Vaccine</h4>
+
+                    </div>
+
+                </div>
+
+        
+        
+        
+        <div class="container">
+            
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
@@ -410,19 +560,31 @@
                 </table>
 
             </div>
+            
+      
 
 
 
             <!-- Page -->
-            <div style="text-align: center" class="mt-5">
-                <a href="AdminManagerVaccine.jsp?page=1"><<</a>
-                <a href="AdminManagerVaccine.jsp?page=${page-1}"><</a>
-                <c:out value="${page}"/>
-                <a href="AdminManagerVaccine.jsp?page=${page+1}">></a>
-                <a href="AdminManagerVaccine.jsp?page=${maxpage}">>></a>
-            </div>
+             <ul class="pagination">
+                    <li class="page-item disabled"><a href="AdminManagerVaccine.jsp?page=1">Previous</a></li>
+                    <li class="page-item"><a href="AdminManagerVaccine.jsp?page=${page-1}" class="page-link">${page}</a></li>
+                    <li class="page-item active"><a href="#" class="page-link"><c:out value="${page+1}"/></a>
+                    <li class="page-item"><a href="AdminManagerVaccine.jsp?page=${page+1}" class="page-link">${page+2}</a></li>
+                    <li class="page-item"><a href="AdminManagerVaccine.jsp?page=${maxpage}">Next</li>
+                   
+                  </ul>
 
         </div>
+            
+                  <!--footer-->
+       <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="footer-in">
+                            <p class="mb-0">&copy 2020 Vishweb design - All Rights Reserved.</p>
+                        </div>
+                    </div>
+                </footer>
 
         <script>
             function  showMess(idVaccine) {
@@ -494,6 +656,14 @@
                 session.removeAttribute("addinforsucess");
             }
         %>   
+        
+         <script src="assets/js/managerjs.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
 

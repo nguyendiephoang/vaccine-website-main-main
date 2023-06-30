@@ -329,29 +329,83 @@ public class VaccineDAO extends DBContext {
 // code get vaccine and edit vaccine by hospital
  
        
-    public void updateVaccineProvision(int idVaccine, String name, String detail, String img, double pricePerService) {
-        String sqlUpdateVaccine = "UPDATE vaccine SET name = ?, detail = ? WHERE idVaccine = ?";
-        String sqlUpdateProvision = "UPDATE vaccine_provision SET img = ?, pricePerService = ? WHERE idVaccineVP = ?";
+    public void updateVaccineProvision(String idVaccine, String img, String id, String pricePerService) {
+
+        String sql = "UPDATE vaccine_provision SET img = ?, pricePerService = ? WHERE idVaccineVP = ? AND idHVP = ?";
 
         try {
             conn = new DBContext().getConnect();
-            ps = conn.prepareStatement(sqlUpdateVaccine);
-            ps.setString(1, name);
-            ps.setString(2, detail);
-            ps.setInt(3, idVaccine);
-            ps.executeUpdate();
-
-            ps = conn.prepareStatement(sqlUpdateProvision);
+            ps = conn.prepareStatement(sql);
             ps.setString(1, img);
-            ps.setDouble(2, pricePerService);
-            ps.setInt(3, idVaccine);
+            ps.setString(2, pricePerService);
+            ps.setString(3, idVaccine);
+            ps.setString(4, id);
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            closeResources();
+            // Đảm bảo kết nối và PreparedStatement được đóng ngay cả khi có ngoại lệ xảy ra
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
+    public void insertVaccineProvison(String idVaccine, String idHVP, String price, String img) {
+        String query = "INSERT INTO [dbo].[vaccine_provision] ([idVaccineVP], [idHVP], [img], [pricePerService])\n"
+                + "VALUES (?,? ,? ,? );";
+        try {
+            conn = new DBContext().getConnect(); // Mở kết nối với cơ sở dữ liệu
+            ps = conn.prepareStatement(query);
+            ps.setString(1, idVaccine);
+            ps.setString(2, idHVP);
+            ps.setString(3, img);
+            ps.setString(4, price);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Đảm bảo kết nối và PreparedStatement được đóng ngay cả khi có ngoại lệ xảy ra
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // kiem tra id ton tai cua vacccine provison Nguyen Ngoc Nhan
+    public VaccineProvision checkExistVaccineProvsionById(String idVaccine) {
+        String query = "SELECT *\n"
+                + "FROM [dbo].[vaccine_provision]\n"
+                + "WHERE [idVaccineVP] = ?;";
+
+        try {
+            conn = new DBContext().getConnect(); // mo ket noi voi sql sever
+            ps = conn.prepareStatement(query); //chay cau lenh query
+            ps.setString(1, idVaccine);
+
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new VaccineProvision(rs.getString(1), rs.getDouble(2), rs.getInt(3), rs.getInt(4));
+
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    
     
 
     public static void main(String[] args) {
