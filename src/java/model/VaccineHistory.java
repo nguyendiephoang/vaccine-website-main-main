@@ -6,20 +6,20 @@ public class VaccineHistory {
 
     private String userName;
     private Boolean gender;
-    private String Hospital;
-    private Date date;
-    private String vaccine;
-    private double price;
+    private String nameVaccine;
+    private String nameHospital;
+    private String date;
+    private String price;
 
     public VaccineHistory() {
     }
 
-    public VaccineHistory(String userName, Boolean gender, String Hospital, Date date, String vaccine, double price) {
+    public VaccineHistory(String userName, Boolean gender, String nameVaccine, String nameHospital, String date, String price) {
         this.userName = userName;
         this.gender = gender;
-        this.Hospital = Hospital;
+        this.nameVaccine = nameVaccine;
+        this.nameHospital = nameHospital;
         this.date = date;
-        this.vaccine = vaccine;
         this.price = price;
     }
 
@@ -39,41 +39,43 @@ public class VaccineHistory {
         this.gender = gender;
     }
 
-    public String getHospital() {
-        return Hospital;
+    public String getNameVaccine() {
+        return nameVaccine;
     }
 
-    public void setHospital(String Hospital) {
-        this.Hospital = Hospital;
+    public void setNameVaccine(String nameVaccine) {
+        this.nameVaccine = nameVaccine;
     }
 
-    public Date getDate() {
+    public String getNameHospital() {
+        return nameHospital;
+    }
+
+    public void setNameHospital(String nameHospital) {
+        this.nameHospital = nameHospital;
+    }
+
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public String getVaccine() {
-        return vaccine;
-    }
-
-    public void setVaccine(String vaccine) {
-        this.vaccine = vaccine;
-    }
-
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
     @Override
     public String toString() {
-        return "VaccineHistory{" + "userName=" + userName + ", gender=" + gender + ", Hospital=" + Hospital + ", date=" + date + ", vaccine=" + vaccine + ", price=" + price + '}';
+        return "VaccineHistory{" + "userName=" + userName + ", gender=" + gender + ", nameVaccine=" + nameVaccine + ", nameHospital=" + nameHospital + ", date=" + date + ", price=" + price + '}';
     }
+
+    
 
 }
